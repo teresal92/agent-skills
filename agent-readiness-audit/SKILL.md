@@ -21,16 +21,23 @@ Before judging anything, identify:
 
 Evaluate using the tools this repo actually uses. Do not recommend swapping tools unless the current ones can't do the job.
 
+### Budget
+
+- Start with directory listings, config files, and instruction files. Use grep, counts, and file listings instead of reading source files in full.
+- Sample at most 3 representative files per major package.
+- If the repo is too large to cover, say which parts were not examined.
+
 ## Step 2: Evaluate each checklist item
 
 Assign one status per item:
 
 - PASS: clearly in place and working
 - PARTIAL: exists but incomplete, outdated, unenforced, or inconsistent
-- MISSING: not present
+- MISSING: you checked and it is not present
 - N/A: doesn't apply to this stack (say why)
+- UNCLEAR: you could not check it (say what blocked you, e.g. external CI or parts of the repo not examined)
 
-Back every status with evidence: file paths, config keys, or short quoted snippets (under 15 words each). If there is no evidence, mark MISSING rather than guessing.
+Back every status with evidence: file paths, config keys, or short quoted snippets (under 15 words each). Never guess: if you checked and found nothing, mark MISSING; if you could not check, mark UNCLEAR.
 
 ### Checklist
 
@@ -57,6 +64,7 @@ Back every status with evidence: file paths, config keys, or short quoted snippe
    - Pre-push hook lints or tests affected packages, including dependents
    - CI re-runs the same checks so hooks can't be bypassed
    - Hooks are reasonably fast
+   - Hooks are wired up: hook config is committed, an install step exists (prepare script, setup doc, or core.hooksPath), and the commands it calls exist. Verify by reading files; never run hooks.
 5. Oversight and structure
    - Architecture decisions documented
    - PR review required before merge (check branch protection or CODEOWNERS if visible)
@@ -71,7 +79,7 @@ Sample the code for patterns applied consistently but written down nowhere, and 
 Produce:
 
 1. A summary table: item, status, one-line evidence
-2. A "gaps" section: each PARTIAL or MISSING item, what's wrong, and why it matters for agent reliability
+2. A "gaps" section: each PARTIAL, MISSING, or UNCLEAR item, what's wrong, and why it matters for agent reliability
 3. A prioritized recommendation list (highest-leverage first), each with a concrete next step and rough effort (small/medium/large), phrased in terms of this repo's existing tools
 4. The top 5 candidate conventions from Step 3
 
