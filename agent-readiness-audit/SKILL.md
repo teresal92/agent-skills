@@ -1,6 +1,6 @@
 ---
 name: agent-readiness-audit
-description: "Use when asked to audit a repo's readiness for AI coding agents, or to review its agent instructions (AGENTS.md/CLAUDE.md), in-repo skills, lint guardrails, or commit/push gates. Read-only audit that outputs a report."
+description: "Use when asked to audit a repo's readiness for AI coding agents, or to review its AGENTS.md/CLAUDE.md, in-repo skills, lint guardrails, or commit/push gates. Read-only audit; outputs a report."
 ---
 
 # Agent readiness audit
